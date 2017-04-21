@@ -20,6 +20,10 @@ const UserSchema = Schema({
       type: String,
       default: "user"
     },
+    credit : {
+      type: Number,
+      default: 10000
+    }
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'
