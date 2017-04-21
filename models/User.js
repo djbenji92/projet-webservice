@@ -16,6 +16,10 @@ const UserSchema = Schema({
         type: String,
         required: true
     },
+    role : {
+      type: String,
+      default: "user"
+    },
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'

@@ -27,5 +27,10 @@ module.exports = (server) => {
         server.actions.users.remove
     );
 
+    router.put('/:id/grant',
+        server.middlewares.bodyParser.json(),
+        server.actions.users.grant
+    );
+
     return router;
 };
