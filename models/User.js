@@ -23,7 +23,7 @@ const UserSchema = Schema({
     credit : {
       type: Number,
       default: 10000
-    }
+    },
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'

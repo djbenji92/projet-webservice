@@ -1,6 +1,7 @@
 module.exports = (server) => {
     const Bot = server.models.Bot;
     const Weapon = server.models.Weapon;
+    const User = server.models.User;
 
     //bots/:id/assign/:weaponId
     return (req, res, next) => {
@@ -30,17 +31,30 @@ module.exports = (server) => {
 
                 bot.weapons.push(weapon._id);
 
-                weapon.save((err, instance) => {
-                    if (err)
-                        return res.status(500).send(err);
+                //decredite l'utilisateur avant de sauvegarder
+                if(!bot.user)
+                  return res.status(403).send(err);
 
-                    bot.save((err, instance) => {
+                User.findOne({'_id':bot.user, "credit":{$gt: weapon.prix}}, (err, user) => {
+                  if(!user)
+                    return res.status(403).send(err);
+                    console.log(user);
+                    user.credit = user.credit - weapon.prix;
+                    user.save();
+
+                    weapon.save((err, instance) => {
                         if (err)
                             return res.status(500).send(err);
 
-                        res.status(204).send();
+                        bot.save((err, instance) => {
+                            if (err)
+                                return res.status(500).send(err);
+
+                            res.status(204).send();
+                        })
                     })
                 })
+
             })
         })
     };
