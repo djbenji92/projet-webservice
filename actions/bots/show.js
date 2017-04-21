@@ -2,10 +2,10 @@ module.exports = (server) => {
     const Bot = server.models.Bot;
 
     return (req, res, next) => {
-        let query = Bot.findById(req.params.id)
+        let bot = Bot.findById(req.params.id)
             .populate('weapons');
 
-        query.exec((err, instance) => {
+        bot.exec((err, instance) => {
             if (err)
                 return res.status(500).send(err);
 

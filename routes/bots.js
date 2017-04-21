@@ -15,6 +15,10 @@ module.exports = (server) => {
         server.actions.bots.list
     );
 
+    router.get('/all',
+        server.actions.bots.listAll
+    );
+
     router.get('/:id',
         server.actions.bots.show
     );

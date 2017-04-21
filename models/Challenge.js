@@ -23,10 +23,10 @@ const ChallengeSchema = Schema({
         type: String,
         default: 'Pending'
     },
-    bot: {
+    bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'
-    }
+    }]
 });
 
 ChallengeSchema.plugin(timestamps);
