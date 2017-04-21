@@ -5,6 +5,7 @@ module.exports = (server) => {
         list: require('./list')(server),
         show: require('./show')(server),
         remove: require('./remove')(server),
-        grant: require('./grant')(server)
+        grant: require('./grant')(server),
+        credit: require('./credit')(server)
     };
 };

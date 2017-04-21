@@ -27,8 +27,15 @@ module.exports = (server) => {
         server.actions.users.remove
     );
 
-    router.put('/:id/grant',
+    router.post('/:id/grant',
         server.middlewares.bodyParser.json(),
+        server.middlewares.ensureAuthenticated,
+        server.actions.users.grant
+    );
+
+    router.post('/:id/credit/:credit',
+        server.middlewares.bodyParser.json(),
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.users.grant
     );
 

@@ -7,18 +7,20 @@ module.exports = (server) => {
     router.post('/',
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Bot.schema),
-        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.bots.create
     );
 
     router.get('/',
-        server.middlewares.ensureAuthenticatedAndRoleAdmin,
-        //server.middlewares.ensureAuthenticated,
         server.actions.bots.list
     );
 
     router.get('/all',
         server.actions.bots.listAll
+    );
+
+    router.get('/me',
+        server.actions.bots.myList
     );
 
     router.get('/:id',
@@ -37,10 +39,12 @@ module.exports = (server) => {
     );
 
     router.post('/:id/assign/:weaponId',
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.bots.assign
     );
 
     router.post('/:id/drop/:weaponId',
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,       
         server.actions.bots.drop
     );
 

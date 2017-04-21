@@ -22,6 +22,7 @@ module.exports = (server) => {
     );
 
     router.delete('/:id',
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.challenges.remove
     );
 

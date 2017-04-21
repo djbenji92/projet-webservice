@@ -4,6 +4,7 @@ module.exports = (server) => {
         update: require('./update')(server),
         list: require('./list')(server),
         listAll: require('./listAll')(server),
+        myList: require('./myList')(server),
         show: require('./show')(server),
         remove: require('./remove')(server),
         assign: require('./assign')(server),

@@ -5,6 +5,7 @@ module.exports = (server) => {
     router.post('/',
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Weapon.schema),
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.weapons.create
     );
 
@@ -22,10 +23,12 @@ module.exports = (server) => {
 
     router.put('/:id',
         server.middlewares.bodyParser.json(),
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.weapons.update
     );
 
     router.delete('/:id',
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
         server.actions.weapons.remove
     );
 
