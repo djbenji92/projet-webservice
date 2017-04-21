@@ -5,6 +5,7 @@ module.exports = (server) => {
         ensureAuthenticated: require('./ensureAuthenticated')(server),
         clean: require('./clean'),
         logger: require('./logger'),
+        ensureAuthenticatedAndRoleAdmin: require('./ensureAuthenticatedAndRoleAdmin')(server),
         res: require('./res')
     };
 };

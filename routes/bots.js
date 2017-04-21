@@ -12,6 +12,8 @@ module.exports = (server) => {
     );
 
     router.get('/',
+        server.middlewares.ensureAuthenticatedAndRoleAdmin,
+        //server.middlewares.ensureAuthenticated,
         server.actions.bots.list
     );
 
