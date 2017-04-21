@@ -19,7 +19,7 @@ const WeaponSchema = Schema({
         type: Number,
         required: true
     },
-    capacité: {
+    capacite: {
         type: Number,
         required: true
     },
