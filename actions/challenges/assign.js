@@ -1,40 +1,37 @@
 module.exports = (server) => {
     const Bot = server.models.Bot;
-    const Weapon = server.models.Weapon;
+    const Challenge = server.models.Challenge;
 
-    //bots/:id/assign/:weaponId
+    //challenges/:id/assign/:botId
     return (req, res, next) => {
 
-        Weapon.findById(req.params.weaponId, (err, weapon) => {
+        Bot.findById(req.params.botId, (err, bot) => {
             if (err)
                 return res.status(500).send(err);
 
-            if (!weapon)
+            if (!bot)
                 return res.status(404).send();
 
-            if (weapon.bot)
+            if (bot.bot)
                 return res.status(403).send();
 
-            Bot.findById(req.params.id, (err, bot) => {
+            Challenge.findById(req.params.id, (err, challenge) => {
                 if (err)
                     return res.status(500).send(err);
 
-                if (!bot)
+                if (!challenge)
                     return res.status(404).send();
 
-                let nbWeapons = bot.weapons.length;
-                if(nbWeapons >= bot.slots)
-                    return res.status(403).send();
 
-                weapon.bot = bot._id;
+                bot.challenge = challenge._id;
 
-                bot.weapons.push(weapon._id);
+                challenge.bots.push(bot._id);
 
-                weapon.save((err, instance) => {
+                challenge.save((err, instance) => {
                     if (err)
                         return res.status(500).send(err);
 
-                    bot.save((err, instance) => {
+                    challenge.save((err, instance) => {
                         if (err)
                             return res.status(500).send(err);
 

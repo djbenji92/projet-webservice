@@ -26,6 +26,10 @@ const BotSchema = Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    challenge: {
+        type: Schema.Types.ObjectId,
+        ref: 'Challenge'
     }
 });
 

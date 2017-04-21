@@ -25,5 +25,9 @@ module.exports = (server) => {
         server.actions.challenges.remove
     );
 
+    router.post('/:id/assign/:botId',
+        server.actions.challenges.assign
+    );
+
     return router;
 };

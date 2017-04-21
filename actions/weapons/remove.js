@@ -15,7 +15,6 @@ module.exports = (server) => {
 
             Bot.findById(weapon.bot, (err, bot) => {
                 bot.weapons.remove(weapon._id);
-                bot.slots ++;
                 bot.save((err, data) => {
                     if (err)
                         return res.status(500).send(err);

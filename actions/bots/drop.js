@@ -27,7 +27,6 @@ module.exports = (server) => {
                     return res.status(403).send();
 
                 bot.weapons.remove(req.params.weaponId);
-                bot.slots++;
 
                 weapon.bot = undefined;
 

@@ -23,7 +23,7 @@ const UserSchema = Schema({
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'
-    }]
+    }],
 });
 
 UserSchema.plugin(timestamps);
