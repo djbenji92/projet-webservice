@@ -19,9 +19,9 @@ const ChallengeSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    status: {
+    slots: {
         type: String,
-        required: true
+        default: 'Pending'
     },
     bot: {
         type: Schema.Types.ObjectId,

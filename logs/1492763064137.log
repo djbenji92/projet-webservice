@@ -1,0 +1,5 @@
+[Fri Apr 21 2017 10:24:35 GMT+0200 (CEST)]:::[POST]:::[/challenges] 
+[Fri Apr 21 2017 10:24:42 GMT+0200 (CEST)]:::[GET]:::[/challenges] 
+[Fri Apr 21 2017 10:25:47 GMT+0200 (CEST)]:::[PUT]:::[/challenges/58f9c1c3cb81fa14b76bdce0] 
+[Fri Apr 21 2017 10:25:54 GMT+0200 (CEST)]:::[GET]:::[/challenges/58f9c1c3cb81fa14b76bdce0] 
+[Fri Apr 21 2017 10:26:06 GMT+0200 (CEST)]:::[DELETE]:::[/challenges/58f9c1c3cb81fa14b76bdce0] 
