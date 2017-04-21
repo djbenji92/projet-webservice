@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 module.exports = (server) => {
 
-    router.post('/',
+    router.post('/:id',
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Challenge.schema),
         server.actions.challenges.create
